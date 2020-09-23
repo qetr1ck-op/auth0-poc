@@ -8,6 +8,7 @@ import config from "./auth_config.json";
 import history from "./utils/history";
 
 const onRedirectCallback = (appState) => {
+  debugger;
   history.push(
     appState && appState.returnTo
       ? appState.returnTo
@@ -20,8 +21,10 @@ ReactDOM.render(
     domain={config.domain}
     clientId={config.clientId}
     audience={config.audience}
-    redirectUri={window.location.origin}
+    redirectUri={config.redirectUri}
     onRedirectCallback={onRedirectCallback}
+    scope={config.scope}
+
   >
     <App />
   </Auth0Provider>,
